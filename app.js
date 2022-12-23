@@ -51,8 +51,8 @@ app.post('/auth', async(req,res)=>{
     
 
     if(user && pass){
-        connection.query('SELECT * FROM log WHERE user = ?', [user], async(error,results)=>{
-            if(results.length==0 || !(await pass==results[0].pass)){
+        connection.query('SELECT * FROM users WHERE user = ?', [user], async(error,results)=>{
+            if(results?.length==0 || !(await pass==results[0].pass)){
                 res.render('login',{
                     alert:true,
                     alertTitle: "Error",
@@ -116,7 +116,7 @@ app.get('/logout',(req,res)=>{
 
 
 app.listen(2992, (req,res)=>{
-    console.log("\n\tserver running");
+    console.log("\n||server running in port 2992||");
 })
 
 
